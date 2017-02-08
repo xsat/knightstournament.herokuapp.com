@@ -1,15 +1,15 @@
 ul.grid {
     list-style: none;
-    width: 510px;
-    height: 510px;
+    width: 460px;
+    height: 460px;
     position: relative;
     border: 1px solid;
     padding: 0;
     margin: 20px;
 }
 ul.grid li {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border: 1px solid #000;
     float: left;
     padding: 0;
@@ -55,4 +55,19 @@ ul.grid li.blue {
 ul.grid li.yellow {
     background-color: #ff0;
     border-color: #ff0;
+}
+ul.grid li.red.blue,
+ul.grid li.red.yellow,
+ul.grid li.green.red,
+ul.grid li.green.blue,
+ul.grid li.blue.green,
+ul.grid li.blue.yellow,
+ul.grid li.yellow.blue,
+ul.grid li.yellow.green {
+}
+ul.grid li.red.green.blue,
+ul.grid li.red.green.yellow,
+ul.grid li.red.blue.yellow {
+}
+ul.grid li.red.green.blue.yellow {
 }

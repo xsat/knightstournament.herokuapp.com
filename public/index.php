@@ -18,6 +18,8 @@
         <button type="button" class="block">Block</button>
         <button type="button" class="end">End turn</button>
         <button type="button" class="reset">Reset</button>
+        <button type="button" class="log">Log</button>
+        <button type="button" class="test">Test</button>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js" type="application/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="application/javascript"></script>
