@@ -3,10 +3,10 @@
 namespace Common\Models;
 
 /**
- * Class User
+ * Class Friend
  * @package Common\Models
  */
-class User extends ParentModel
+class Friend extends ParentModel
 {
 
 }
