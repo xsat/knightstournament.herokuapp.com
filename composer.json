@@ -3,5 +3,10 @@
     "cboden/ratchet": "^0.3.5",
     "vlucas/phpdotenv": "*",
     "phalcon/devtools": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Common\\": "apps/common/components/"
+    }
   }
 }
