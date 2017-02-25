@@ -3,20 +3,15 @@
 namespace Common;
 
 use PDO;
-use Phalcon\Loader;
 use Dotenv\Dotenv;
-use Phalcon\Mvc\Url;
-use Phalcon\DI\FactoryDefault;
+use Phalcon\Loader;
 use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Mvc\Application as PhalconApplication;
+use Phalcon\DI\FactoryDefault\CLI;
+use Phalcon\CLI\Console as PhalconConsole;
 use Phalcon\Session\Adapter\Files as SessionFiles;
 use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 
-/**
- * Class Application
- * @package Common
- */
-class Application extends PhalconApplication
+class Console extends PhalconConsole
 {
     protected function registerAutoloaders()
     {
@@ -25,20 +20,14 @@ class Application extends PhalconApplication
 
         $loader = new Loader();
         $loader->registerNamespaces([
-            'Frontend' => __DIR__ . '/../../frontend/components/',
+            'Server' => __DIR__ . '/../../server/components/',
         ]);
         $loader->register();
     }
 
     protected function registerServices()
     {
-        $di = new FactoryDefault();
-        $di->set('router', function() {
-            return new Router();
-        }, true);
-        $di->set('url', function() {
-            return new Url();
-        }, true);
+        $di = new CLI();
         $di->set('db', function() {
             return new Mysql([
                 'host' => getenv('DB_HOST'),
@@ -64,21 +53,20 @@ class Application extends PhalconApplication
         $this->setDI($di);
     }
 
-    /**
-     * @return string
-     */
-    public function main()
+    public function main($argv)
     {
         $this->registerAutoloaders();
         $this->registerServices();
         $this->registerModules([
-            'frontend' => [
-                'className' => 'Frontend\Module',
-                'path' => __DIR__ . '/../../frontend/components/Module.php',
+            'server' => [
+                'className' => 'Server\Module',
+                'path' => __DIR__ . '/../../server/components/Module.php',
             ],
         ]);
-        $this->setDefaultModule('frontend');
+        $this->setDefaultModule('server');
 
-        return $this->handle()->getContent();
+        array_shift($argv);
+
+        $this->handle();
     }
 }

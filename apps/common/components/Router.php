@@ -12,6 +12,5 @@ class Router extends PhalconRouter
 {
     public function initialize()
     {
-
     }
 }
