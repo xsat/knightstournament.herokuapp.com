@@ -20,6 +20,7 @@ class Console extends PhalconConsole
 
         $loader = new Loader();
         $loader->registerNamespaces([
+            'Common' => __DIR__ . '/../libraries/',
             'Server' => __DIR__ . '/../../server/components/',
         ]);
         $loader->register();

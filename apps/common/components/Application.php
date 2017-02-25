@@ -25,6 +25,7 @@ class Application extends PhalconApplication
 
         $loader = new Loader();
         $loader->registerNamespaces([
+            'Common' => __DIR__ . '/../libraries/',
             'Frontend' => __DIR__ . '/../../frontend/components/',
         ]);
         $loader->register();
