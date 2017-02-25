@@ -12,4 +12,10 @@ class IndexController extends ParentController
     {
 
     }
+
+    public function testAction()
+    {
+        $this->assets->addCss('/css/test.css');
+        $this->assets->addJs('/js/test.js');
+    }
 }

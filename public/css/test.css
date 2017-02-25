@@ -1,0 +1,20 @@
+#chat {
+    height: 400px;
+    overflow: auto;
+    border: 2px solid #f00;
+}
+#chat ul {
+    padding: 0 6px;
+    margin: 0;
+}
+#chat ul li {
+    border-bottom: 1px solid;
+    padding: 3px 0;
+}
+#chat ul li:last-child {
+    border-bottom: none;
+}
+
+#new-message {
+    margin-top: 20px;
+}
