@@ -8,8 +8,13 @@ namespace Server\Tasks;
  */
 class MainTask extends ParentTask
 {
-    public function mainAction()
+    public function mainAction(array $params)
     {
-        var_dump(1);
+        var_dump($params);
+    }
+
+    public function testAction(array $params)
+    {
+        var_dump($params);
     }
 }

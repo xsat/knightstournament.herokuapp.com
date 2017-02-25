@@ -53,7 +53,10 @@ class Console extends PhalconConsole
         $this->setDI($di);
     }
 
-    public function main($argv)
+    /**
+     * @param array $argv
+     */
+    public function main(array $argv)
     {
         $this->registerAutoloaders();
         $this->registerServices();
@@ -64,9 +67,32 @@ class Console extends PhalconConsole
             ],
         ]);
         $this->setDefaultModule('server');
+        $this->handle($this->parseArguments($argv));
+    }
+
+    /**
+     * @param array $argv
+     * @return array
+     */
+    private function parseArguments(array $argv)
+    {
+        $arguments = [];
 
         array_shift($argv);
 
-        $this->handle();
+        foreach ($argv as $k => $arg) {
+            $values = explode('=', $arg);
+            if (isset($values[0]) && isset($values[1])) {
+                $arguments['params'][$values[0]] = $values[1];
+            } elseif (empty($arguments['task'])) {
+                $arguments['task'] = $arg;
+            } elseif (empty($arguments['action'])) {
+                $arguments['action'] = $arg;
+            } else {
+                $arguments['params'][] = $arg;
+            }
+        }
+
+        return $arguments;
     }
 }
