@@ -9,5 +9,5 @@ do
     mkdir $dir
     file=$dir".gitignore"
     touch $file
-    echo "$content" > $file;
+    echo "$content" > $file
 done
