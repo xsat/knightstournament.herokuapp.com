@@ -8,5 +8,10 @@
     "psr-4": {
       "Common\\": "apps/common/components/"
     }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "cleaner.sh"
+    ]
   }
 }

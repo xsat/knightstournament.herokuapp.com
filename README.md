@@ -1,3 +1,3 @@
 # KnightsTournament
 
-My project [knightstournament.herokuapp.com](https://knightstournament.herokuapp.com)
+My project via Phalcon
