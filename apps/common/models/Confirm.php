@@ -3,10 +3,10 @@
 namespace Common\Models;
 
 /**
- * Class Friend
+ * Class Confirm
  * @package Common\Models
  */
-class Friend extends Model
+class Confirm extends Model
 {
     const STATUS_CONFIRMED = 1;
     const STATUS_DENIED = 2;
@@ -23,9 +23,9 @@ class Friend extends Model
     public $user_id;
 
     /**
-     * @var integer
+     * @var string
      */
-    public $friend_id;
+    public $code;
 
     /**
      * @var integer

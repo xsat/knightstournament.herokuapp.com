@@ -3,15 +3,11 @@
 namespace Common\Models;
 
 /**
- * Class Friend
+ * Class Settings
  * @package Common\Models
  */
-class Friend extends Model
+class Settings extends Model
 {
-    const STATUS_CONFIRMED = 1;
-    const STATUS_DENIED = 2;
-    const STATUS_PENDING = 3;
-
     /**
      * @var integer
      */
@@ -25,12 +21,17 @@ class Friend extends Model
     /**
      * @var integer
      */
-    public $friend_id;
+    public $send_newsletters = 0;
 
     /**
-     * @var integer
+     * @var int
      */
-    public $status = self::STATUS_PENDING;
+    public $friend_requests = 1;
+
+    /**
+     * @var int
+     */
+    public $mute_messages = 0;
 
     /**
      * @var string

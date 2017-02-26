@@ -3,19 +3,20 @@
 namespace Common\Models;
 
 /**
- * Class Friend
+ * Class Player
  * @package Common\Models
  */
-class Friend extends Model
+class Player extends Model
 {
-    const STATUS_CONFIRMED = 1;
-    const STATUS_DENIED = 2;
-    const STATUS_PENDING = 3;
-
     /**
      * @var integer
      */
     public $id;
+
+    /**
+     * @var integer
+     */
+    public $game_id;
 
     /**
      * @var integer
@@ -25,12 +26,7 @@ class Friend extends Model
     /**
      * @var integer
      */
-    public $friend_id;
-
-    /**
-     * @var integer
-     */
-    public $status = self::STATUS_PENDING;
+    public $points;
 
     /**
      * @var string

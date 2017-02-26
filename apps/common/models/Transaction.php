@@ -3,11 +3,15 @@
 namespace Common\Models;
 
 /**
- * Class Friend
+ * Class Transaction
  * @package Common\Models
  */
-class Friend extends Model
+class Transaction extends Model
 {
+    const TYPE_NONE = 0;
+    const TYPE_ADD = 1;
+    const TYPE_BUY = 2;
+
     const STATUS_CONFIRMED = 1;
     const STATUS_DENIED = 2;
     const STATUS_PENDING = 3;
@@ -25,7 +29,12 @@ class Friend extends Model
     /**
      * @var integer
      */
-    public $friend_id;
+    public $amount;
+
+    /**
+     * @var integer
+     */
+    public $type = self::TYPE_NONE;
 
     /**
      * @var integer
