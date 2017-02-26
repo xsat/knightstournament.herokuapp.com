@@ -3,11 +3,16 @@
 namespace Common\Models;
 
 /**
- * Class Player
+ * Class Step
  * @package Common\Models
  */
-class Player extends Model
+class Step extends Model
 {
+    const TYPE_NONE = 1;
+    const TYPE_MOVE = 2;
+    const TYPE_ATTACK = 3;
+    const TYPE_BLOCK = 4;
+
     /**
      * @var integer
      */
@@ -23,28 +28,18 @@ class Player extends Model
      */
     public $user_id;
 
+    /*
+     * @var integer
+     */
+    public $x;
+
+    /*
+     * @var integer
+     */
+    public $y;
+
     /**
      * @var integer
      */
-    public $health;
-
-    /**
-     * @var integer
-     */
-    public $steps;
-
-    /**
-     * @var integer
-     */
-    public $points;
-
-    /**
-     * @var string
-     */
-    public $date_create;
-
-    /**
-     * @var string
-     */
-    public $date_update;
+    public $type = self::TYPE_NONE;
 }

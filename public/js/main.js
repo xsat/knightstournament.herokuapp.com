@@ -3,8 +3,8 @@ function Game() {
     this.grid = this.container.find('.grid');
     this.actions = {
         default: 1,
-        attack: 2,
-        move: 3,
+        move: 2,
+        attack: 3,
         block: 4
     };
     this.act = this.actions.default;
