@@ -7,7 +7,7 @@ use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 
-class SocketTask extends ParentTask
+class SocketTask extends Task
 {
     public function mainAction()
     {

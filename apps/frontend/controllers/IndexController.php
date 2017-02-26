@@ -6,7 +6,7 @@ namespace Frontend\Controllers;
  * Class MainController
  * @package Frontend\Controllers
  */
-class IndexController extends ParentController
+class IndexController extends Controller
 {
     public function indexAction()
     {

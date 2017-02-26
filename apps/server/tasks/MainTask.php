@@ -6,7 +6,7 @@ namespace Server\Tasks;
  * Class MainTask
  * @package Server\Tasks
  */
-class MainTask extends ParentTask
+class MainTask extends Task
 {
     public function mainAction(array $params)
     {

@@ -2,13 +2,13 @@
 
 namespace Frontend\Controllers;
 
-use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Controller as PhalconController;
 
 /**
- * Class ParentController
+ * Class Controller
  * @package Frontend\Controllers
  */
-class ParentController extends Controller
+class Controller extends PhalconController
 {
     public function initialize()
     {

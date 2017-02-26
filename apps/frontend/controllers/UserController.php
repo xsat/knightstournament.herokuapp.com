@@ -6,7 +6,7 @@ namespace Frontend\Controllers;
  * Class UserController
  * @package Frontend\Controllers
  */
-class UserController extends ParentController
+class UserController extends Controller
 {
 
 }

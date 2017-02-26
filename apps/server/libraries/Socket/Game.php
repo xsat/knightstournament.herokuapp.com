@@ -6,13 +6,13 @@ use Exception;
 use SplObjectStorage;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-use Server\Component\ParentComponent;
+use Server\Component\Component;
 
 /**
  * Class Game
  * @package Server\Socket
  */
-class Game extends ParentComponent implements MessageComponentInterface
+class Game extends Component implements MessageComponentInterface
 {
     /**
      * @var SplObjectStorage
