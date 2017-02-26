@@ -11,6 +11,10 @@ use Phalcon\CLI\Console as PhalconConsole;
 use Phalcon\Session\Adapter\Files as SessionFiles;
 use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 
+/**
+ * Class Console
+ * @package Common
+ */
 class Console extends PhalconConsole
 {
     protected function registerAutoloaders()
