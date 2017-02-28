@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Settings
  * @package Common\Models
  */
 class Settings extends Model
 {
+    use Dates;
+
     /**
      * @var integer
      */
@@ -42,4 +46,11 @@ class Settings extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }

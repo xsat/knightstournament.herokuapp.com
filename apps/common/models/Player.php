@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Player
  * @package Common\Models
  */
 class Player extends Model
 {
+    use Dates;
+
     /**
      * @var integer
      */
@@ -47,4 +51,15 @@ class Player extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('game_id', 'Common\Models\Game', 'id', [
+            'alias' => 'game',
+        ]);
+
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }

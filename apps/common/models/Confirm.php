@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Confirm
  * @package Common\Models
  */
 class Confirm extends Model
 {
+    use Dates;
+
     const STATUS_CONFIRMED = 1;
     const STATUS_DENIED = 2;
     const STATUS_PENDING = 3;
@@ -41,4 +45,11 @@ class Confirm extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }

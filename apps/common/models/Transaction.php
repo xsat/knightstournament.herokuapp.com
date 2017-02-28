@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Transaction
  * @package Common\Models
  */
 class Transaction extends Model
 {
+    use Dates;
+
     const TYPE_NONE = 0;
     const TYPE_ADD = 1;
     const TYPE_BUY = 2;
@@ -50,4 +54,11 @@ class Transaction extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }

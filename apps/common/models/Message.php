@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Message
  * @package Common\Models
  */
 class Message extends Model
 {
+    use Dates;
+
     const STATUS_VIEWED = 1;
     const STATUS_PENDING = 2;
 
@@ -19,12 +23,12 @@ class Message extends Model
     /**
      * @var integer
      */
-    public $user_id;
+    public $sender_id;
 
     /**
      * @var integer
      */
-    public $partner_id;
+    public $receiver_id;
 
     /**
      * @var string
@@ -45,4 +49,15 @@ class Message extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('sender_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+
+        $this->belongsTo('receiver_id', 'Common\Models\User', 'id', [
+            'alias' => 'receiver',
+        ]);
+    }
 }

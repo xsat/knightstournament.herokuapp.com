@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Token
  * @package Common\Models
  */
 class Token extends Model
 {
+    use Dates;
+
     /**
      * @var integer
      */
@@ -32,4 +36,11 @@ class Token extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }

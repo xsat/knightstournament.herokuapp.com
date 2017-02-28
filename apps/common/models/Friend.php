@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Friend
  * @package Common\Models
  */
 class Friend extends Model
 {
+    use Dates;
+
     const STATUS_CONFIRMED = 1;
     const STATUS_DENIED = 2;
     const STATUS_PENDING = 3;
@@ -41,4 +45,15 @@ class Friend extends Model
      * @var string
      */
     public $date_update;
+
+    public function initialize()
+    {
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+
+        $this->belongsTo('friend_id', 'Common\Models\User', 'id', [
+            'alias' => 'friend',
+        ]);
+    }
 }

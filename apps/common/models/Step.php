@@ -2,12 +2,16 @@
 
 namespace Common\Models;
 
+use Common\Traits\Dates;
+
 /**
  * Class Step
  * @package Common\Models
  */
 class Step extends Model
 {
+    use Dates;
+
     const TYPE_NONE = 1;
     const TYPE_MOVE = 2;
     const TYPE_ATTACK = 3;
@@ -42,4 +46,15 @@ class Step extends Model
      * @var integer
      */
     public $type = self::TYPE_NONE;
+
+    public function initialize()
+    {
+        $this->belongsTo('game_id', 'Common\Models\Game', 'id', [
+            'alias' => 'game',
+        ]);
+
+        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
+            'alias' => 'user',
+        ]);
+    }
 }
