@@ -5,10 +5,10 @@ namespace Common\Models;
 use Common\Traits\Dates;
 
 /**
- * Class Player
+ * Class Character
  * @package Common\Models
  */
-class Player extends Model
+class Character extends Model
 {
     use Dates;
 

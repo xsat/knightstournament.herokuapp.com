@@ -70,8 +70,8 @@ class User extends Model
             'alias' => 'steps',
         ]);
 
-        $this->hasMany('id', 'Common\Models\Player', 'user_id', [
-            'alias' => 'players',
+        $this->hasMany('id', 'Common\Models\Character', 'user_id', [
+            'alias' => 'characters',
         ]);
 
         $this->hasMany('id', 'Common\Models\Transaction', 'user_id', [

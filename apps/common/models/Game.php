@@ -38,8 +38,8 @@ class Game extends Model
 
     public function initialize()
     {
-        $this->hasMany('id', 'Common\Models\Player', 'game_id', [
-            'alias' => 'players',
+        $this->hasMany('id', 'Common\Models\Character', 'game_id', [
+            'alias' => 'characters',
         ]);
 
         $this->hasMany('id', 'Common\Models\Step', 'step_id', [
