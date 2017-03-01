@@ -30,17 +30,17 @@ class Character extends Model
     /**
      * @var integer
      */
-    public $health;
+    public $health = 100;
 
     /**
      * @var integer
      */
-    public $steps;
+    public $steps = 5;
 
     /**
      * @var integer
      */
-    public $points;
+    public $points = 0;
 
     /**
      * @var string

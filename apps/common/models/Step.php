@@ -2,16 +2,12 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
-
 /**
  * Class Step
  * @package Common\Models
  */
 class Step extends Model
 {
-    use Dates;
-
     const TYPE_NONE = 1;
     const TYPE_MOVE = 2;
     const TYPE_ATTACK = 3;
