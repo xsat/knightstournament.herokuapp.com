@@ -61,5 +61,9 @@ class Character extends Model
         $this->belongsTo('user_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);
+
+        $this->hasMany('id', 'Common\Models\Step', 'character_id', [
+            'alias' => 'steps',
+        ]);
     }
 }

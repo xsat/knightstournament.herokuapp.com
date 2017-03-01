@@ -30,6 +30,11 @@ class Step extends Model
     /**
      * @var integer
      */
+    public $character_id;
+
+    /**
+     * @var integer
+     */
     public $user_id;
 
     /*
@@ -53,8 +58,8 @@ class Step extends Model
             'alias' => 'game',
         ]);
 
-        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
-            'alias' => 'user',
+        $this->belongsTo('character_id', 'Common\Models\Character', 'id', [
+            'alias' => 'character',
         ]);
     }
 }

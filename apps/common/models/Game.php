@@ -42,7 +42,7 @@ class Game extends Model
             'alias' => 'characters',
         ]);
 
-        $this->hasMany('id', 'Common\Models\Step', 'step_id', [
+        $this->hasMany('id', 'Common\Models\Step', 'game_id', [
             'alias' => 'steps',
         ]);
     }
