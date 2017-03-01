@@ -13,6 +13,11 @@ class IndexController extends Controller
 
     }
 
+    public function notFoundAction()
+    {
+        return 'Error 404';
+    }
+
     public function testAction()
     {
         $this->assets->addCss('/css/test.css');

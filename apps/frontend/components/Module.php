@@ -2,6 +2,7 @@
 
 namespace Frontend;
 
+use Common\Router;
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\DiInterface;
