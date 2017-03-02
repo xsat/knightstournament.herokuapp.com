@@ -8,7 +8,5 @@ do
     rm -r $dir
     mkdir $dir
     chmod 777 $dir
-    file=$dir".gitignore"
-    touch $file
-    echo "$content" > $file
+    echo "$content" > "$dir.gitignore"
 done
