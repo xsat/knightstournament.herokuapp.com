@@ -29,6 +29,7 @@ class Module implements ModuleDefinitionInterface
             __NAMESPACE__ . '\Models' => __DIR__ . '/../models/',
             __NAMESPACE__ . '\Forms' => __DIR__ . '/../forms/',
             __NAMESPACE__ . '\Controllers' => __DIR__ . '/../controllers/',
+            __NAMESPACE__ . '\Interfaces' => __DIR__ . '/../interfaces/',
         ]);
         $loader->register();
     }

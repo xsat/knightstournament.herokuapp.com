@@ -2,7 +2,7 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
+use Common\Traits\Dates as DatesTrait;
 
 /**
  * Class Message
@@ -10,7 +10,7 @@ use Common\Traits\Dates;
  */
 class Message extends Model
 {
-    use Dates;
+    use DatesTrait;
 
     const STATUS_VIEWED = 1;
     const STATUS_PENDING = 2;

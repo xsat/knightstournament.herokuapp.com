@@ -2,7 +2,7 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
+use Common\Traits\Dates as DatesTrait;
 
 /**
  * Class Settings
@@ -10,7 +10,7 @@ use Common\Traits\Dates;
  */
 class Settings extends Model
 {
-    use Dates;
+    use DatesTrait;
 
     /**
      * @var integer

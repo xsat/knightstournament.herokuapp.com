@@ -2,7 +2,7 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
+use Common\Traits\Dates as DatesTrait;
 
 /**
  * Class Transaction
@@ -10,7 +10,7 @@ use Common\Traits\Dates;
  */
 class Transaction extends Model
 {
-    use Dates;
+    use DatesTrait;
 
     const TYPE_NONE = 0;
     const TYPE_ADD = 1;

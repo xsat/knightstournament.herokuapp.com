@@ -2,7 +2,7 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
+use Common\Traits\Dates as DatesTrait;
 
 /**
  * Class Game
@@ -10,7 +10,7 @@ use Common\Traits\Dates;
  */
 class Game extends Model
 {
-    use Dates;
+    use DatesTrait;
 
     const STATUS_STARTED = 1;
     const STATUS_ENDED = 2;

@@ -2,7 +2,7 @@
 
 namespace Common\Models;
 
-use Common\Traits\Dates;
+use Common\Traits\Dates as DatesTrait;
 
 /**
  * Class Confirm
@@ -10,7 +10,7 @@ use Common\Traits\Dates;
  */
 class Confirm extends Model
 {
-    use Dates;
+    use DatesTrait;
 
     const STATUS_CONFIRMED = 1;
     const STATUS_DENIED = 2;
