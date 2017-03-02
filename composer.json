@@ -2,7 +2,8 @@
   "require": {
     "cboden/ratchet": "^0.3.5",
     "vlucas/phpdotenv": "*",
-    "phalcon/devtools": "dev-master"
+    "phalcon/devtools": "dev-master",
+    "twbs/bootstrap": "*"
   },
   "autoload": {
     "psr-4": {
@@ -11,7 +12,8 @@
   },
   "scripts": {
     "post-update-cmd": [
-      "cleaner.sh"
+      "cleaner.sh",
+      "bootstrap.sh"
     ]
   }
 }
