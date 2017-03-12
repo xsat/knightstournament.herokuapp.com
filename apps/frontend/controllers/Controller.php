@@ -34,6 +34,8 @@ class Controller extends PhalconController
         if ($this->auth->isUser()) {
             $this->view->setTemplateBefore('authorized');
         }
+
+        $this->view->setVar('user', $this->auth->getUser());
     }
 
     /**
@@ -51,14 +53,20 @@ class Controller extends PhalconController
      */
     protected function defaultRedirect()
     {
+        if ($this->auth->isUser()) {
+            return $this->response->redirect([
+                'name' => 'home',
+            ]);
+        }
+
         return $this->response->redirect([
             'name' => 'home',
         ]);
     }
 
     /**
-     * @param $model
-     * @param $form
+     * @param ModelInterface $model
+     * @param FormInterface $form
      * @return bool
      */
     protected function saveModelFromForm(ModelInterface $model, FormInterface $form)

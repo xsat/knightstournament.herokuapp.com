@@ -22,6 +22,12 @@ class AuthorizationController extends Controller
         $form = new RegistrationForm();
 
         if ($this->saveModelFromForm($model, $form)) {
+            $model->save([
+                'status' => User::STATUS_PENDING,
+            ]);
+
+            $this->auth->setUser($model);
+
             return $this->response->redirect($this->url->get([
                 'name' => 'confirmation',
             ]));
@@ -40,6 +46,8 @@ class AuthorizationController extends Controller
         $form = new LoginForm();
 
         if ($this->saveModelFromForm($model, $form)) {
+            $this->auth->setUser($model);
+
             return $this->defaultRedirect();
         }
 

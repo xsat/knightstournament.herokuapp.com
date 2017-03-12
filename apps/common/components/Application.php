@@ -5,6 +5,7 @@ namespace Common;
 use PDO;
 use Phalcon\Loader;
 use Dotenv\Dotenv;
+use Frontend\Router;
 use Phalcon\Mvc\Url;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql;
@@ -80,7 +81,6 @@ class Application extends PhalconApplication
                 'path' => __DIR__ . '/../../frontend/components/Module.php',
             ],
         ]);
-        $this->setDefaultModule('frontend');
 
         return $this->compressContent($this->handle()->getContent());
     }

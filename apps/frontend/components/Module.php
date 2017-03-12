@@ -2,8 +2,8 @@
 
 namespace Frontend;
 
-use Common\Router;
 use Phalcon\Loader;
+use Frontend\Router;
 use Phalcon\Mvc\View;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Dispatcher;
@@ -40,9 +40,6 @@ class Module implements ModuleDefinitionInterface
      */
     public function registerServices(DiInterface $di)
     {
-        $di->set('router', function() {
-            return new Router();
-        }, true);
         $di->set('auth', function() {
             return new Authorization();
         }, true);

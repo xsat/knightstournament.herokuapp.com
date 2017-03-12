@@ -1,14 +1,12 @@
 <?php
 
-namespace Common;
+namespace Frontend;
 
 use Phalcon\Mvc\Router as PhalconRouter;
 
-use Frontend\RouterGroup;
-
 /**
  * Class Router
- * @package Common
+ * @package Frontend
  */
 class Router extends PhalconRouter
 {
@@ -18,11 +16,14 @@ class Router extends PhalconRouter
         $this->setDefaults([
             'controller' => 'index',
             'action' => 'index',
+            'module' => 'frontend',
+            'namespace' => __NAMESPACE__ . '\Controllers',
         ]);
         $this->notFound([
             'controller' => 'index',
             'action' => 'notFound',
         ]);
-        $this->mount(new RouterGroup());
+        $this->mount(new IndexGroup());
+        $this->mount(new AuthorizationGroup());
     }
 }
