@@ -3,6 +3,7 @@
     "cboden/ratchet": "^0.3.5",
     "vlucas/phpdotenv": "*",
     "phalcon/devtools": "dev-master",
+    "phpmailer/phpmailer": "~5.2",
     "twbs/bootstrap": "*"
   },
   "autoload": {
