@@ -8,7 +8,8 @@ use Phalcon\Mvc\View;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View\Engine\Volt;
-use Phalcon\Flash\Session as FlashSession;
+use Frontend\Session\Authorization;
+use Phalcon\Flash\Direct as FlashDirect;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 
@@ -19,9 +20,9 @@ use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 class Module implements ModuleDefinitionInterface
 {
     /**
-     * @param DiInterface|null $dependencyInjector
+     * @param DiInterface|null $di
      */
-    public function registerAutoloaders(DiInterface $dependencyInjector = null)
+    public function registerAutoloaders(DiInterface $di = null)
     {
         $loader = new Loader();
         $loader->registerNamespaces([
@@ -35,36 +36,38 @@ class Module implements ModuleDefinitionInterface
     }
 
     /**
-     * @param DiInterface $dependencyInjector
+     * @param DiInterface $di
      */
-    public function registerServices(DiInterface $dependencyInjector)
+    public function registerServices(DiInterface $di)
     {
-        $dependencyInjector->set('dispatcher', function() {
-            $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace(__NAMESPACE__ . '\Controllers');
-            return $dispatcher;
+        $di->set('router', function() {
+            return new Router();
         }, true);
-        $dependencyInjector->set('flashSession', function() {
-            return new FlashSession([
+        $di->set('auth', function() {
+            return new Authorization();
+        }, true);
+        $di->set('flash', function() {
+            return new FlashDirect([
                 'error' => 'alert alert-danger',
                 'notice' => 'alert alert-warning',
                 'success' => 'alert alert-success',
                 'warning' => 'alert alert-warning',
             ]);
         }, true);
-        $dependencyInjector->set('modelsMetadata', function() {
+        $di->set('modelsMetadata', function() {
             return new MetadataFiles([
                 'metaDataDir' => __DIR__ . '/../cache/models/',
             ]);
         }, true);
-        $dependencyInjector->set('view', function() use ($dependencyInjector) {
+        $di->set('view', function() use ($di) {
             $view = new View();
             $view->setViewsDir(__DIR__ . '/../views/');
             $view->setLayoutsDir('layouts/');
-            $view->setLayout('public');
+            $view->setLayout('index');
+            $view->setTemplateBefore('public');
             $view->registerEngines([
-                '.volt' => function() use ($view, $dependencyInjector) {
-                    $volt = new Volt($view, $dependencyInjector);
+                '.volt' => function() use ($view, $di) {
+                    $volt = new Volt($view, $di);
                     $volt->setOptions([
                         'compiledPath' => __DIR__ . '/../cache/views/',
                         'compiledSeparator' => '_',

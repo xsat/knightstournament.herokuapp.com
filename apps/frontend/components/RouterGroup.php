@@ -12,13 +12,15 @@ class RouterGroup extends Group
             'module' => 'frontend',
             'namespace' => 'Frontend\Controllers',
         ]);
-
         $this->add('/', [
             'controller' => 'index',
             'action' => 'index'
         ])->setName('home');
-
-        $this->add('/signin', [
+        $this->add('/notFound', [
+            'controller' => 'index',
+            'action' => 'notFound'
+        ])->setName('not-found');
+        $this->add('/login', [
             'controller' => 'authorization',
             'action' => 'login'
         ])->setName('login');

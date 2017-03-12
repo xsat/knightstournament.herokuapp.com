@@ -16,9 +16,9 @@ use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 class Module implements ModuleDefinitionInterface
 {
     /**
-     * @param DiInterface|null $dependencyInjector
+     * @param DiInterface|null $di
      */
-    public function registerAutoloaders(DiInterface $dependencyInjector = null)
+    public function registerAutoloaders(DiInterface $di = null)
     {
         $loader = new Loader();
         $loader->registerNamespaces([
@@ -32,19 +32,19 @@ class Module implements ModuleDefinitionInterface
     /**
      * @param DiInterface $dependencyInjector
      */
-    public function registerServices(DiInterface $dependencyInjector)
+    public function registerServices(DiInterface $di)
     {
-        $dependencyInjector->set('dispatcher', function() {
+        $di->set('dispatcher', function() {
             $dispatcher = new Dispatcher();
             $dispatcher->setDefaultNamespace(__NAMESPACE__ . '\Tasks');
             return $dispatcher;
         }, true);
-        $dependencyInjector->set('modelsMetadata', function() {
+        $di->set('modelsMetadata', function() {
             return new MetadataFiles([
                 'metaDataDir' => __DIR__ . '/../cache/models/',
             ]);
         }, true);
-        $dependencyInjector->set('router', function() {
+        $di->set('router', function() {
             return new Router();
         }, true);
     }

@@ -15,6 +15,8 @@ class IndexController extends Controller
 
     public function notFoundAction()
     {
+        $this->response->setStatusCode(404);
+
         return 'Error 404';
     }
 
