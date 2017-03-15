@@ -44,7 +44,7 @@ class Controller extends PhalconController
     protected function notFoundRedirect()
     {
         return $this->response->redirect([
-            'name' => 'not-found',
+            'for' => 'not-found',
         ]);
     }
 
@@ -55,12 +55,12 @@ class Controller extends PhalconController
     {
         if ($this->auth->isUser()) {
             return $this->response->redirect([
-                'name' => 'home',
+                'for' => 'home',
             ]);
         }
 
         return $this->response->redirect([
-            'name' => 'home',
+            'for' => 'home',
         ]);
     }
 

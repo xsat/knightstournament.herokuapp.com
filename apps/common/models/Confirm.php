@@ -48,6 +48,8 @@ class Confirm extends Model
 
     public function initialize()
     {
+        $this->setSource('confirm');
+
         $this->belongsTo('user_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);

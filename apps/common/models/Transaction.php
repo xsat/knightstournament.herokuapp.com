@@ -57,6 +57,8 @@ class Transaction extends Model
 
     public function initialize()
     {
+        $this->setSource('transaction');
+
         $this->belongsTo('user_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);

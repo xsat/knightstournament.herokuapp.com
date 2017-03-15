@@ -1,12 +1,14 @@
 <?php
 
-namespace Frontend;
+namespace Frontend\RouterGroup;
+
+use Frontend\RouterGroup;
 
 /**
- * Class AuthorizationGroup
- * @package Frontend
+ * Class Authorization
+ * @package Frontend\RouterGroup
  */
-class AuthorizationGroup extends RouterGroup
+class Authorization extends RouterGroup
 {
     public function __construct()
     {

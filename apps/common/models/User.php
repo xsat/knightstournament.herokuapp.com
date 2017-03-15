@@ -58,6 +58,8 @@ class User extends Model
 
     public function initialize()
     {
+        $this->setSource('user');
+
         $this->hasMany('id', 'Common\Models\Confirm', 'user_id', [
             'alias' => 'confirms',
         ]);

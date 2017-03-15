@@ -10,19 +10,12 @@ use Common\Models\User as CommonUser;
  */
 class User extends CommonUser
 {
-    public function afterCreate()
-    {
-        $confirm = new Confirm();
-        $confirm->create([
-            'user_id' => $this->id,
-        ]);
-    }
-
     /**
      * @param string $value
+     * @return string
      */
-    public function setPassword($value)
+    protected function crypt($value)
     {
-        $this->password = crypt($value, getenv('PASSWORD_SALT'));
+        return crypt($value, getenv('PASSWORD_SALT'));
     }
 }

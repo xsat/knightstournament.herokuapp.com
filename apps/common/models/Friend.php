@@ -48,6 +48,8 @@ class Friend extends Model
 
     public function initialize()
     {
+        $this->setSource('friend');
+
         $this->belongsTo('user_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);

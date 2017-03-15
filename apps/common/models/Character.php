@@ -54,6 +54,8 @@ class Character extends Model
 
     public function initialize()
     {
+        $this->setSource('character');
+
         $this->belongsTo('game_id', 'Common\Models\Game', 'id', [
             'alias' => 'game',
         ]);

@@ -4,6 +4,9 @@ namespace Frontend;
 
 use Phalcon\Mvc\Router as PhalconRouter;
 
+use Frontend\RouterGroup\Index;
+use Frontend\RouterGroup\Authorization;
+
 /**
  * Class Router
  * @package Frontend
@@ -23,7 +26,7 @@ class Router extends PhalconRouter
             'controller' => 'index',
             'action' => 'notFound',
         ]);
-        $this->mount(new IndexGroup());
-        $this->mount(new AuthorizationGroup());
+        $this->mount(new Index());
+        $this->mount(new Authorization());
     }
 }

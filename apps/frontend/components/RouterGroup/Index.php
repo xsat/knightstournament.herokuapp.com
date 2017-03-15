@@ -1,12 +1,14 @@
 <?php
 
-namespace Frontend;
+namespace Frontend\RouterGroup;
+
+use Frontend\RouterGroup;
 
 /**
- * Class IndexGroup
- * @package Frontend
+ * Class Index
+ * @package Frontend\RouterGroup
  */
-class IndexGroup extends RouterGroup
+class Index extends RouterGroup
 {
     public function __construct()
     {

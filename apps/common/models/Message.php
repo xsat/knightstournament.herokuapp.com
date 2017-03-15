@@ -52,6 +52,8 @@ class Message extends Model
 
     public function initialize()
     {
+        $this->setSource('message');
+
         $this->belongsTo('sender_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);

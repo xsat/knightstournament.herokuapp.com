@@ -50,6 +50,8 @@ class Step extends Model
 
     public function initialize()
     {
+        $this->setSource('step');
+
         $this->belongsTo('game_id', 'Common\Models\Game', 'id', [
             'alias' => 'game',
         ]);

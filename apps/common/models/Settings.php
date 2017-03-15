@@ -49,6 +49,8 @@ class Settings extends Model
 
     public function initialize()
     {
+        $this->setSource('settings');
+
         $this->belongsTo('user_id', 'Common\Models\User', 'id', [
             'alias' => 'user',
         ]);

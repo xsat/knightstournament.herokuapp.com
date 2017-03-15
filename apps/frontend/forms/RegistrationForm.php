@@ -8,6 +8,10 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\PresenceOf;
 
+/**
+ * Class RegistrationForm
+ * @package Frontend\Forms
+ */
 class RegistrationForm extends Form
 {
     public function initialize()

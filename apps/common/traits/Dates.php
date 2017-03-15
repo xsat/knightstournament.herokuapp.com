@@ -10,12 +10,12 @@ namespace Common\Traits;
  */
 trait Dates
 {
-    public function beforeCreate()
+    public function beforeValidationOnCreate()
     {
         $this->date_create = $this->date_update = date('Y-m-d H:i:s');
     }
 
-    public function beforeUpdate()
+    public function beforeValidationOnUpdate()
     {
         $this->date_update = date('Y-m-d H:i:s');
     }

@@ -3,13 +3,13 @@
 namespace Frontend;
 
 use Phalcon\Loader;
-use Frontend\Router;
 use Phalcon\Mvc\View;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View\Engine\Volt;
 use Frontend\Session\Authorization;
 use Phalcon\Flash\Direct as FlashDirect;
+use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 
@@ -45,6 +45,14 @@ class Module implements ModuleDefinitionInterface
         }, true);
         $di->set('flash', function() {
             return new FlashDirect([
+                'error' => 'alert alert-danger',
+                'notice' => 'alert alert-warning',
+                'success' => 'alert alert-success',
+                'warning' => 'alert alert-warning',
+            ]);
+        }, true);
+        $di->set('flashSession', function() {
+            return new FlashSession([
                 'error' => 'alert alert-danger',
                 'notice' => 'alert alert-warning',
                 'success' => 'alert alert-success',
