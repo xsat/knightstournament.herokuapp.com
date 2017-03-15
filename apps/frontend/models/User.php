@@ -10,12 +10,4 @@ use Common\Models\User as CommonUser;
  */
 class User extends CommonUser
 {
-    /**
-     * @param string $value
-     * @return string
-     */
-    protected function crypt($value)
-    {
-        return crypt($value, getenv('PASSWORD_SALT'));
-    }
 }

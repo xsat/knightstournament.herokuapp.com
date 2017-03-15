@@ -3,6 +3,7 @@
 namespace Frontend\Models\User;
 
 use Frontend\Models\User;
+use Frontend\Traits\Crypt;
 use Phalcon\Mvc\Model\Message;
 
 /**
@@ -11,6 +12,8 @@ use Phalcon\Mvc\Model\Message;
  */
 class Login extends User
 {
+    use Crypt;
+
     public function initialize()
     {
         parent::initialize();
@@ -22,6 +25,9 @@ class Login extends User
         ]);
     }
 
+    /**
+     * @return bool
+     */
     public function validation()
     {
         $user = $this->findFirst([

@@ -3,6 +3,7 @@
 namespace Frontend\Models\User;
 
 use Frontend\Models\User;
+use Frontend\Traits\Crypt;
 use Frontend\Models\Confirm;
 
 /**
@@ -11,6 +12,8 @@ use Frontend\Models\Confirm;
  */
 class Registration extends User
 {
+    use Crypt;
+
     public function afterCreate()
     {
         $confirm = new Confirm();
