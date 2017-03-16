@@ -21,14 +21,4 @@ class Registration extends User
             'user_id' => $this->id,
         ]);
     }
-
-    /**
-     * @param string $value
-     */
-    public function setPassword($value)
-    {
-        if ($value) {
-            $this->password = $this->crypt($value);
-        }
-    }
 }

@@ -8,6 +8,7 @@ use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Validation\Validator\Confirmation;
 
 /**
  * Class RegistrationForm
@@ -76,6 +77,10 @@ class RegistrationForm extends Form
             new PresenceOf([
                 'message' => 'You can\'t leave this empty.',
                 'cancelOnFail' => true,
+            ]),
+            new Confirmation([
+                'message' => 'These passwords don\'t match.',
+                'with' => 'password',
             ]),
         ])->setFilters([
             'trim',
