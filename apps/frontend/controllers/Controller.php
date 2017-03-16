@@ -74,7 +74,7 @@ class Controller extends PhalconController
                 return true;
             }
 
-            $this->showMessagesFromForm($model, $form);
+            $this->showMessages($model);
         }
 
         return false;

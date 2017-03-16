@@ -48,7 +48,7 @@ class AuthorizationController extends Controller
         $model = new Login();
         $form = new LoginForm();
 
-        if ($this->saveModelFromForm($model, $form)) {
+        if ($this->validateModelFromForm($model, $form)) {
             $this->auth->setUser($model);
 
             return $this->defaultRedirect();

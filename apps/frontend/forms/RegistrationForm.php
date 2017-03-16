@@ -2,10 +2,10 @@
 
 namespace Frontend\Forms;
 
-use Phalcon\Forms\Element\Email;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Submit;
+use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Uniqueness;
 
@@ -31,13 +31,17 @@ class RegistrationForm extends Form
             'string',
         ]));
 
-        $this->add((new Email('email', [
+        $this->add((new Text('email', [
             'class' => 'form-control',
             'autocomplete' => 'off',
             'maxlength' => '128',
         ]))->setLabel('Email')->addValidators([
             new PresenceOf([
                 'message' => 'You can\'t leave this empty.',
+                'cancelOnFail' => true,
+            ]),
+            new Email([
+                'message' => 'Please enter a valid email address.',
                 'cancelOnFail' => true,
             ]),
             new Uniqueness([
