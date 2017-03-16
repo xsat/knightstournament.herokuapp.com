@@ -4,6 +4,7 @@ namespace Frontend\Controllers;
 
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\Response;
+use Phalcon\Validation\Message;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Http\ResponseInterface;
 use Frontend\Interfaces\Form as FormInterface;
@@ -26,10 +27,7 @@ class Controller extends PhalconController
         $this->assets->addJs('/js/main.js');
     }
 
-    /**
-     * @param Dispatcher $dispatcher
-     */
-    public function afterExecuteRoute(Dispatcher $dispatcher)
+    public function afterExecuteRoute()
     {
         if ($this->auth->isUser()) {
             $this->view->setTemplateBefore('authorized');
@@ -71,16 +69,34 @@ class Controller extends PhalconController
      */
     protected function saveModelFromForm(ModelInterface $model, FormInterface $form)
     {
-        if ($this->request->isPost()) {
-            if ($form->isValid($this->request->getPost(), $model) && $model->save()) {
+        if ($this->validateModelFromForm($model, $form)) {
+            if ($model->save()) {
                 return true;
-            } elseif ($model->validationHasFailed()) {
-                foreach ($model->getMessages() as $message) {
-                    $this->flashSession->error($message);
-                }
             }
+
+            $this->showMessagesFromForm($model, $form);
         }
 
         return false;
+    }
+
+    /**
+     * @param ModelInterface $model
+     * @param FormInterface $form
+     * @return bool
+     */
+    protected function validateModelFromForm(ModelInterface $model, FormInterface $form)
+    {
+        return $this->request->isPost() && $form->isValid($this->request->getPost(), $model);
+    }
+
+    /**
+     * @param ModelInterface $model
+     */
+    protected function showMessages(ModelInterface $model)
+    {
+        foreach ($model->getMessages() as $message) {
+            $this->flashSession->error($message);
+        }
     }
 }

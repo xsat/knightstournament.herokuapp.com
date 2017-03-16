@@ -39,12 +39,12 @@ class Login extends User
         ]);
 
         if (!$user) {
-            $this->appendMessage(new Message('Please enter a valid email address and password.'));
+            $this->appendMessage(new Message('Please enter a valid email address and password.', 'email'));
             return false;
         }
 
-        if ($user->status != self::STATUS_CONFIRMED) {
-            $this->appendMessage(new Message('Please confirm your email.'));
+        if ($user->status == self::STATUS_BANNED) {
+            $this->appendMessage(new Message('Your account was banned', 'email'));
             return false;
         }
 

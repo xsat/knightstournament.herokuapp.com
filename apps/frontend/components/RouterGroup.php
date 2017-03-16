@@ -2,7 +2,7 @@
 
 namespace Frontend;
 
-use Phalcon\Mvc\Router\Group ;
+use Phalcon\Mvc\Router\Group;
 
 /**
  * Class RouterGroup

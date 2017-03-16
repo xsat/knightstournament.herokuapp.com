@@ -14,6 +14,6 @@ trait Crypt
      */
     protected function crypt($value)
     {
-        return crypt($value, getenv('CRYPT_SALT'));
+        return sha1($value . getenv('CRYPT_SALT'));
     }
 }

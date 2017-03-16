@@ -7,6 +7,7 @@ use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\Uniqueness;
 
 /**
  * Class RegistrationForm
@@ -37,6 +38,10 @@ class RegistrationForm extends Form
         ]))->setLabel('Email')->addValidators([
             new PresenceOf([
                 'message' => 'You can\'t leave this empty.',
+                'cancelOnFail' => true,
+            ]),
+            new Uniqueness([
+                'message' => 'That email is taken. Try another.',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([

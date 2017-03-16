@@ -2,7 +2,7 @@
 
 namespace Frontend\Interfaces;
 
-use Phalcon\Validation\Message\Group as PhalconGroup;
+use Phalcon\Validation\Message\Group;
 
 /**
  * Interface Form
@@ -19,7 +19,7 @@ interface Form
 
     /**
      * @param bool $byItemName
-     * @return PhalconGroup
+     * @return Group
      */
     public function getMessages($byItemName = false);
 }
