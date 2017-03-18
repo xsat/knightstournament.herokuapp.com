@@ -6,6 +6,7 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
 
 /**
  * Class RegistrationForm
@@ -18,14 +19,19 @@ class ForgotPasswordFrom extends Form
         $this->add((new Text('email', [
             'class' => 'form-control',
             'autocomplete' => 'off',
-            'maxlength' => '128',
+            'maxlength' => '32',
         ]))->setLabel('Email')->addValidators([
             new PresenceOf([
-                'message' => 'You can\'t leave this empty.',
+                'message' => 'You can\'t leave this empty',
                 'cancelOnFail' => true,
             ]),
             new Email([
-                'message' => 'Please enter a valid email address.',
+                'message' => 'Please enter a valid email address',
+                'cancelOnFail' => true,
+            ]),
+            new StringLength([
+                'max' => 32,
+                'messageMinimum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([

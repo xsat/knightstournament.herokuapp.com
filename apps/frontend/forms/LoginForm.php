@@ -7,6 +7,7 @@ use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
 
 /**
  * Class LoginForm
@@ -19,14 +20,19 @@ class LoginForm extends Form
         $this->add((new Text('email', [
             'class' => 'form-control',
             'autocomplete' => 'off',
-            'maxlength' => '128',
+            'maxlength' => '32',
         ]))->setLabel('Email')->addValidators([
             new PresenceOf([
-                'message' => 'You can\'t leave this empty.',
+                'message' => 'You can\'t leave this empty',
                 'cancelOnFail' => true,
             ]),
             new Email([
-                'message' => 'Please enter a valid email address.',
+                'message' => 'Please enter a valid email address',
+                'cancelOnFail' => true,
+            ]),
+            new StringLength([
+                'max' => 32,
+                'messageMinimum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([
@@ -38,10 +44,17 @@ class LoginForm extends Form
         $this->add((new Password('password', [
             'class' => 'form-control',
             'autocomplete' => 'off',
-            'maxlength' => '64',
-        ]))->setLabel('Password')->addValidators([
+            'maxlength' => '32',
+        ]))->setLabel('Create a password')->addValidators([
             new PresenceOf([
-                'message' => 'You can\'t leave this empty.',
+                'message' => 'You can\'t leave this empty',
+                'cancelOnFail' => true,
+            ]),
+            new StringLength([
+                'min' => 8,
+                'messageMaximum' => 'Try one with at least 8 characters',
+                'max' => 32,
+                'messageMinimum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([
