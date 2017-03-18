@@ -31,7 +31,7 @@ class ForgotPasswordFrom extends Form
             ]),
             new StringLength([
                 'max' => 32,
-                'messageMinimum' => 'Must have at most 32 characters',
+                'messageMaximum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([

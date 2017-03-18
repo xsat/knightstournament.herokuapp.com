@@ -35,9 +35,9 @@ class RegistrationForm extends Form
             ]),
             new StringLength([
                 'min' => 2,
-                'messageMaximum' => 'Try one with at least 2 characters',
+                'messageMinimum' => 'Try one with at least 2 characters',
                 'max' => 32,
-                'messageMinimum' => 'Must have at most 32 characters',
+                'messageMaximum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([
@@ -64,7 +64,7 @@ class RegistrationForm extends Form
             ]),
             new StringLength([
                 'max' => 32,
-                'messageMinimum' => 'Must have at most 32 characters',
+                'messageMaximum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([
@@ -84,9 +84,9 @@ class RegistrationForm extends Form
             ]),
             new StringLength([
                 'min' => 8,
-                'messageMaximum' => 'Try one with at least 8 characters',
+                'messageMinimum' => 'Try one with at least 8 characters',
                 'max' => 32,
-                'messageMinimum' => 'Must have at most 32 characters',
+                'messageMaximum' => 'Must have at most 32 characters',
                 'cancelOnFail' => true,
             ]),
         ])->setFilters([
