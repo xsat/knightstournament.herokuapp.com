@@ -21,10 +21,12 @@ CREATE TABLE `character` (
 CREATE TABLE `confirm` (
   `id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
+  `token` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '3',
   `date_create` datetime NOT NULL,
-  `date_update` datetime NOT NULL
+  `date_update` datetime NOT NULL,
+  `date_expire` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `friend` (
@@ -175,7 +177,7 @@ ALTER TABLE `token`
 ALTER TABLE `transaction`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `character`
   ADD CONSTRAINT `character_game_id_fk` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

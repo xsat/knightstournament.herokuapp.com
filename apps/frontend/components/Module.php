@@ -2,6 +2,7 @@
 
 namespace Frontend;
 
+use PHPMailer;
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\DiInterface;
@@ -43,6 +44,17 @@ class Module implements ModuleDefinitionInterface
     {
         $di->set('auth', function() {
             return new Authorization();
+        }, true);
+        $di->set('mailer', function() {
+            $mailer = new PHPMailer(true);
+            /*$mailer->isSMTP();
+            $mailer->SMTPAuth = true;
+            $mailer->Host = getenv('SMTP_HOST');
+            $mailer->Port = getenv('SMTP_PORT');
+            $mailer->Username = getenv('SMTP_USERNAME');
+            $mailer->Password = getenv('SMTP_PASSWORD');
+            $mailer->SMTPSecure = 'tls';*/
+            return $mailer;
         }, true);
         $di->set('flash', function() {
             return new FlashDirect([

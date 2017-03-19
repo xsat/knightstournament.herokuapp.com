@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4dfb2755117f74194049f62091dbe59f",
-    "content-hash": "333c9ef356bb604e1c2d0b090081fe31",
+    "hash": "2e0b49399f96f6a1b95415e1265c503b",
+    "content-hash": "5242c48e74ba247bfdd4578e09d22678",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -305,7 +305,7 @@
         },
         {
             "name": "phalcon/devtools",
-            "version": "dev-master",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon/phalcon-devtools.git",
@@ -960,9 +960,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "phalcon/devtools": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -1,9 +1,9 @@
 {{ form() }}
-    {{ flashSession.output() }}
     <div class="form-group">
         {{ form.label('name') }}
         {{ form.render('name') }}
         {{ form.messages('name') }}
+        {{ flashSession.output() }}
     </div>
     <div class="form-group">
         {{ form.label('email') }}

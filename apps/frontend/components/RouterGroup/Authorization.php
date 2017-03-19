@@ -17,27 +17,27 @@ class Authorization extends RouterGroup
         ]);
 
         $this->add('/login', [
-            'action' => 'login'
+            'action' => 'login',
         ])->setName('login');
 
         $this->add('/signup', [
-            'action' => 'registration'
+            'action' => 'registration',
         ])->setName('registration');
 
         $this->add('/logout', [
-            'action' => 'logout'
+            'action' => 'logout',
         ])->setName('logout');
 
-        $this->add('/confirmation', [
-            'action' => 'confirmation'
+        $this->add('/confirmation/{token:[a-zA-Z0-9]+}', [
+            'action' => 'confirmation',
         ])->setName('confirmation');
 
         $this->add('/reset-password', [
-            'action' => 'resetPassword'
+            'action' => 'resetPassword',
         ])->setName('reset-password');
 
         $this->add('/forgot-password', [
-            'action' => 'forgotPassword'
+            'action' => 'forgotPassword',
         ])->setName('forgot-password');
     }
 }

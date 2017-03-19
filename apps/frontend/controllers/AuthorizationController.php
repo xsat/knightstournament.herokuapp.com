@@ -2,9 +2,9 @@
 
 namespace Frontend\Controllers;
 
+use Frontend\Forms\ConfirmationForm;
+use Frontend\Models\Confirm;
 use Frontend\Models\User;
-use Frontend\Models\User\Registration;
-use Frontend\Models\User\Login;
 use Frontend\Forms\LoginForm;
 use Frontend\Forms\RegistrationForm;
 use Frontend\Forms\ForgotPasswordFrom;
@@ -21,19 +21,18 @@ class AuthorizationController extends Controller
             return $this->defaultRedirect();
         }
 
-        $model = new Registration();
+        $model = new User();
         $form = new RegistrationForm();
 
-        if ($this->saveModelFromForm($model, $form)) {
-            $model->save([
-                'status' => User::STATUS_PENDING,
-            ]);
+        if ($this->validateModelFromForm($model, $form)) {
+            if ($model->save(['status' => User::STATUS_PENDING])) {
+                $confirm = $model->createConfirm();
 
-            $this->auth->setUser($model);
-
-            return $this->response->redirect($this->url->get([
-                'for' => 'confirmation',
-            ]));
+                return $this->response->redirect($this->url->get([
+                    'for' => 'confirmation',
+                    'params' => $confirm->token,
+                ]));
+            }
         }
 
         $this->view->setVar('form', $form);
@@ -45,13 +44,24 @@ class AuthorizationController extends Controller
             return $this->defaultRedirect();
         }
 
-        $model = new Login();
+        $model = new User();
         $form = new LoginForm();
 
         if ($this->validateModelFromForm($model, $form)) {
-            $this->auth->setUser($model);
+            $user = User::findFirst([
+                'conditions' => 'email = :email: AND password = :password:',
+                'bind' => [
+                    'email' => $model->email,
+                    'password' => $model->crypt($model->password),
+                ],
+            ]);
 
-            return $this->defaultRedirect();
+            if ($user) {
+                $this->auth->setUser($user);
+                return $this->defaultRedirect();
+            }
+
+            $this->showMessage('Please enter a valid email address and password.');
         }
 
         $this->view->setVar('form', $form);
@@ -66,6 +76,35 @@ class AuthorizationController extends Controller
 
     public function confirmationAction()
     {
+        $model = Confirm::findFirst([
+            'conditions' => 'status = :status: AND token = :token: AND date_expire >= :date_expire:',
+            'bind' => [
+                'status' => Confirm::STATUS_PENDING,
+                'token' => $this->dispatcher->getParam('token', 'string'),
+                'date_expire' => date('Y-m-d H:i:s'),
+            ],
+        ]);
+        if (!$model) {
+            return $this->defaultRedirect();
+        }
+
+        $form = new ConfirmationForm($model);
+
+        if ($this->validateModelFromForm($model, $form)) {
+            $model->save([
+                'status' => Confirm::STATUS_CONFIRMED,
+            ]);
+
+            $model->user->save([
+                'status' => User::STATUS_CONFIRMED,
+            ]);
+
+            $this->auth->setUser($model->user);
+
+            return $this->defaultRedirect();
+        }
+
+        $this->view->setVar('form', $form);
     }
 
     public function resetPasswordAction()
@@ -82,7 +121,7 @@ class AuthorizationController extends Controller
         $model = new User();
         $form = new ForgotPasswordFrom();
 
-        if ($this->saveModelFromForm($model, $form)) {
+        if ($this->validateModelFromForm($model, $form)) {
             return $this->defaultRedirect();
         }
 

@@ -29,6 +29,11 @@ class Confirm extends Model
     /**
      * @var string
      */
+    public $token;
+
+    /**
+     * @var string
+     */
     public $code;
 
     /**
@@ -46,12 +51,8 @@ class Confirm extends Model
      */
     public $date_update;
 
-    public function initialize()
-    {
-        $this->setSource('confirm');
-
-        $this->belongsTo('user_id', 'Common\Models\User', 'id', [
-            'alias' => 'user',
-        ]);
-    }
+    /**
+     * @var string
+     */
+    public $date_expire;
 }

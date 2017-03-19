@@ -96,7 +96,15 @@ class Controller extends PhalconController
     protected function showMessages(ModelInterface $model)
     {
         foreach ($model->getMessages() as $message) {
-            $this->flashSession->error($message);
+            $this->showMessage($message);
         }
+    }
+
+    /**
+     * @param string $message
+     */
+    protected function showMessage($message)
+    {
+        $this->flashSession->error($message);
     }
 }

@@ -7,6 +7,7 @@ use Frontend\Component\Component;
 /**
  * Class Mail
  * @package Frontend\Mail
+ * @property \PHPMailer $mailer
  */
 abstract class Mail extends Component implements MailInterface
 {
@@ -15,26 +16,32 @@ abstract class Mail extends Component implements MailInterface
      */
     public function send()
     {
-        return true;
+        $this->mailer->isHTML(true);
+        $this->mailer->setFrom('noreply@knightstournament.com', 'KnightsTournament');
+        $this->mailer->addAddress($this->getAddress(), $this->getName());
+        $this->mailer->Subject = $this->getSubject();
+        $this->mailer->Body = $this->getBody();
+
+        return $this->mailer->send();
     }
 
     /**
      * @return string
      */
-    protected function getHeaders()
-    {
-        return 'From: webmaster@example.com' . "\r\n" .
-            'Reply-To: webmaster@example.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-    }
+    protected abstract function getAddress();
 
     /**
      * @return string
      */
-    protected abstract function getContent();
+    protected abstract function getName();
 
     /**
      * @return string
      */
     protected abstract function getSubject();
+
+    /**
+     * @return string
+     */
+    protected abstract function getBody();
 }
