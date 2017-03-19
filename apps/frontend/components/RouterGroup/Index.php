@@ -20,6 +20,10 @@ class Index extends RouterGroup
             'action' => 'index'
         ])->setName('home');
 
+        $this->add('/test', [
+            'action' => 'test'
+        ])->setName('test');
+
         $this->add('/notFound', [
             'action' => 'notFound'
         ])->setName('not-found');

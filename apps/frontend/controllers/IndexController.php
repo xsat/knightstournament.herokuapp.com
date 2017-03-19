@@ -22,7 +22,7 @@ class IndexController extends Controller
 
     public function testAction()
     {
-        $this->assets->addCss('/css/test.css');
-        $this->assets->addJs('/js/test.js?v' . rand());
+        /*$this->assets->addCss('/css/test.css');
+        $this->assets->addJs('/js/test.js?v' . rand());*/
     }
 }

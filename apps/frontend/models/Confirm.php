@@ -7,7 +7,6 @@ use Common\Models\Confirm as CommonConfirm;
 /**
  * Class Confirm
  * @package Frontend\Models
- * @property \Frontend\Models\User $user
  */
 class Confirm extends CommonConfirm
 {
